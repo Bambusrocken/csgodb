@@ -1,8 +1,16 @@
 @section('title', $player->name)
 @section('subtitle', $player->firstname . ' ' . $player->lastname)
 
+@section('content-top')
+    <ol class="breadcrumb">
+      <li>{{ link_to_route('home', 'Home') }}</li>
+      <li>{{ link_to_route('player.index', 'Players') }}</li>
+      <li class="active">{{ $player->name }}</li>
+    </ol>
+@stop
+
 @section('content')
-    <div><strong>Current team:</strong> {{ link_to_route('team.show', $player->team->name, $player->team->id) }}</div>
+    <div><strong>Current team:</strong> {{ link_to_route('team.show', $player->team->name, $player->team->slug) }}</div>
     <div><strong>Country:</strong> {{ Countries::getOne($player->country, 'en', 'icu') }}</div>
 
     @if(count($player->playerteamrecords))

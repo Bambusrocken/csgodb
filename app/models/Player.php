@@ -12,4 +12,9 @@ class Player extends \Eloquent {
     {
         return $this->hasMany('Playerteamrecord');
     }
+
+    public static function findBySlug($slug)
+    {
+        return static::where('slug', $slug)->first();
+    }
 }

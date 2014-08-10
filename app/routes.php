@@ -11,10 +11,13 @@
 |
 */
 
-Route::get('/', function()
+Route::get('/', ['as' => 'home', 'uses' =>function()
 {
-	return View::make('layouts.default');
-});
+	return View::make('layouts.home');
+}]);
 
-Route::resource('team', 'TeamController');
-Route::resource('player', 'PlayerController');
+Route::get('teams', ['as' => 'team.index', 'uses' => 'TeamController@index']);
+Route::get('team/{slug}', ['as' => 'team.show', 'uses' => 'TeamController@show']);
+
+Route::get('players/{char?}', ['as' => 'player.index', 'uses' => 'PlayerController@index']);
+Route::get('player/{slug}', ['as' => 'player.show', 'uses' => 'PlayerController@show']);

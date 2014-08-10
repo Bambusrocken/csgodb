@@ -18,6 +18,7 @@ class CreateTeamTable extends Migration {
 			$table->text('name');
             $table->text('tag');
             $table->text('country');
+            $table->text('slug');
 			$table->timestamps();
 		});
 	}

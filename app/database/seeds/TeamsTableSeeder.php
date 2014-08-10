@@ -2,6 +2,7 @@
 
 // Composer: "fzaninotto/faker": "v1.4.0"
 use Faker\Factory as Faker;
+use Illuminate\Support\Str;
 
 class TeamsTableSeeder extends Seeder {
 
@@ -9,47 +10,59 @@ class TeamsTableSeeder extends Seeder {
 	{
         Team::truncate();
 
-        Team::create([
+        $teams =[];
+
+        $teams[] =[
             'name' => 'Titan',
             'tag' => 'Titan',
             'country' => 'fr',
-        ]);
+        ];
 
-        Team::create([
+        $teams[] =[
             'name' => 'Ninjas in Pyjamas',
             'tag' => 'NiP',
             'country' => 'se',
-        ]);
+        ];
 
-        Team::create([
+        $teams[] =[
             'name' => 'Natus Vincere',
             'tag' => 'Na\'Vi',
             'country' => 'ua',
-        ]);
+        ];
 
-        Team::create([
+        $teams[] =[
             'name' => 'mousesports',
             'tag' => 'mouz',
             'country' => 'de',
-        ]);
+        ];
 
-        Team::create([
-            'name' => 'Team Dignitas',
-            'tag' => 'dignitas',
-            'country' => 'dk',
-        ]);
-
-        Team::create([
+        $teams[] =[
             'name' => 'fnatic',
             'tag' => 'fnatic',
             'country' => 'se',
-        ]);
+        ];
 
-        Team::create([
+        $teams[] =[
+            'name' => 'Team Dignitas',
+            'tag' => 'dignitas',
+            'country' => 'dk',
+        ];
+
+        $teams[] =[
             'name' => 'London Conspiracy',
             'tag' => 'LC',
             'country' => 'no',
-        ]);
+        ];
+
+        foreach($teams as $team) {
+            $this->createTeam($team);
+        }
 	}
+
+    private function createTeam($team)
+    {
+        $team = array_merge($team, ['slug' => Str::slug($team['name'])]);
+        Team::create($team);
+    }
 
 }

@@ -14,12 +14,13 @@ class CreatePlayerTable extends Migration {
 	{
 		Schema::create('players', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->increments('id')->unsigned();
             $table->text('name');
 			$table->text('firstname');
             $table->text('lastname');
             $table->text('country');
             $table->integer('team_id');
+            $table->text('slug');
 			$table->timestamps();
 		});
 	}

@@ -10,7 +10,7 @@ class TeamController extends \BaseController {
 	 */
 	public function index()
 	{
-        $teams = Team::all();
+        $teams = Team::paginate(10);
         $this->view('team.index', compact('teams'));
 	}
 
@@ -40,12 +40,12 @@ class TeamController extends \BaseController {
 	 * Display the specified resource.
 	 * GET /team/{id}
 	 *
-	 * @param  int  $id
+	 * @param  string  $slug
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($slug)
 	{
-		$team = Team::find($id);
+		$team = Team::findBySlug($slug);
         $this->view('team.show', compact('team'));
 	}
 

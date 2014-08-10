@@ -17,4 +17,9 @@ class Team extends \Eloquent {
     {
         return $this->hasMany('Teamname');
     }
+
+    public static function findBySlug($slug)
+    {
+        return static::where('slug', $slug)->first();
+    }
 }

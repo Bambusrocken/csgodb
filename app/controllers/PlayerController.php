@@ -8,10 +8,25 @@ class PlayerController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($char = null)
 	{
-		$players = Player::all();
-        $this->view('player.index', compact('players'));
+        $chars = [];
+
+        $players = Player::lists('name');
+        foreach($players as $player) {
+            $chars[] = strtolower(substr($player, 0, 1));
+        }
+
+        $chars = array_unique($chars);
+        sort($chars);
+
+        if($char) {
+            $players = Player::where('name', 'like', $char . '%')->paginate(10);
+        } else {
+            $players = Player::orderBy('name')->paginate(10);
+        }
+
+        $this->view('player.index', compact('players', 'chars'));
 	}
 
 	/**
@@ -40,12 +55,12 @@ class PlayerController extends \BaseController {
 	 * Display the specified resource.
 	 * GET /player/{id}
 	 *
-	 * @param  int  $id
+	 * @param  string  $slug
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($slug)
 	{
-		$player = Player::findOrFail($id);
+		$player = Player::findBySlug($slug);
         $this->view('player.show', compact('player'));
 	}
 

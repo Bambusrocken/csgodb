@@ -12,9 +12,9 @@
     <tbody>
         @foreach($players as $player)
             <tr>
-                <td>{{ link_to_route('player.show', $player->name, $player->id) }}</td>
+                <td>{{ link_to_route('player.show', $player->name, $player->slug) }}</td>
                 @if(empty($hideTeam))
-                    <td>{{ $player->team->name }}</td>
+                    <td>{{ link_to_route('team.show', $player->team->name, $player->team->slug) }}</td>
                 @endif
                 <td>{{{ $player->firstname }}} {{{ $player->lastname }}}</td>
                 <td>{{ Countries::getOne($player->country, 'en', 'icu') }}</td>
@@ -22,3 +22,7 @@
         @endforeach
     </tbody>
 </table>
+
+@if(method_exists($players, 'links'))
+    {{ $players->links() }}
+@endif
