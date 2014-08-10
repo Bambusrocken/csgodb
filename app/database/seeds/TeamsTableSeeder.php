@@ -43,7 +43,7 @@ class TeamsTableSeeder extends Seeder {
         ];
 
         $teams[] =[
-            'name' => 'Team Dignitas',
+            'name' => 'Dignitas, Team',
             'tag' => 'dignitas',
             'country' => 'dk',
         ];

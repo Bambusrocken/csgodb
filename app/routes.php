@@ -11,13 +11,16 @@
 |
 */
 
-Route::get('/', ['as' => 'home', 'uses' =>function()
-{
-	return View::make('layouts.home');
-}]);
+Route::get('/', ['as' => 'home', 'uses' => 'PageController@home']);
 
+// Team
 Route::get('teams', ['as' => 'team.index', 'uses' => 'TeamController@index']);
 Route::get('team/{slug}', ['as' => 'team.show', 'uses' => 'TeamController@show']);
 
+// Player
 Route::get('players/{char?}', ['as' => 'player.index', 'uses' => 'PlayerController@index']);
 Route::get('player/{slug}', ['as' => 'player.show', 'uses' => 'PlayerController@show']);
+
+// Search
+Route::post('search', ['as' => 'search.store', 'uses' => 'SearchController@store']);
+Route::get('search/{term}', ['as' => 'search.index', 'uses' => 'SearchController@index']);

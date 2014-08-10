@@ -22,4 +22,18 @@ class Team extends \Eloquent {
     {
         return static::where('slug', $slug)->first();
     }
+
+    public static function search($q) {
+        $searchTerms = explode(' ', $q);
+
+        $instance = new static;
+        $query = $instance->newQuery();
+
+        foreach($searchTerms as $term)
+        {
+            $query->where('name', 'LIKE', '%'. $term .'%')->orWhere('tag', 'like', '%' . $term . '%');
+        }
+
+        return $query->get();
+    }
 }

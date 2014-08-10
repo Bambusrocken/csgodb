@@ -1,22 +1,26 @@
 <?php
 
-class TeamController extends \BaseController {
+class SearchController extends BaseController {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /team
+	 * GET /search
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($q)
 	{
-        $teams = Team::orderBy('name')->paginate(10);
-        $this->view('team.index', compact('teams'));
+        $results['teams'] = Team::search($q);
+        $results['players'] = Player::search($q);
+        $results = array_filter($results);
+
+        View::share(compact('q'));
+        $this->view('layouts.search', compact('results'));
 	}
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /team/create
+	 * GET /search/create
 	 *
 	 * @return Response
 	 */
@@ -27,31 +31,30 @@ class TeamController extends \BaseController {
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /team
+	 * POST /search
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		//
+        return Redirect::route('search.index', Input::get('search'));
 	}
 
 	/**
 	 * Display the specified resource.
-	 * GET /team/{id}
+	 * GET /search/{id}
 	 *
-	 * @param  string  $slug
+	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($slug)
+	public function show($id)
 	{
-		$team = Team::findBySlug($slug);
-        $this->view('team.show', compact('team'));
+		//
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /team/{id}/edit
+	 * GET /search/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -63,7 +66,7 @@ class TeamController extends \BaseController {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /team/{id}
+	 * PUT /search/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -75,7 +78,7 @@ class TeamController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /team/{id}
+	 * DELETE /search/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response

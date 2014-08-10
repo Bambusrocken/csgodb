@@ -18,13 +18,12 @@
         <li><a href="{{ URL::route('team.index') }}"><span class="glyphicon glyphicon-fire"></span> Teams</a></li>
         <li><a href="{{ URL::route('player.index') }}"><span class="glyphicon glyphicon-user"></span> Players</a></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
+      {{ Form::open(['route' => 'search.store', 'class' => 'navbar-form navbar-left']) }}
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" name="search" class="form-control" placeholder="Search" value="{{{ $q or '' }}}">
         </div>
-        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>
-</button>
-      </form>
+        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+      {{ Form::close() }}
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

@@ -21,7 +21,7 @@ class PlayerController extends \BaseController {
         sort($chars);
 
         if($char) {
-            $players = Player::where('name', 'like', $char . '%')->paginate(10);
+            $players = Player::where('name', 'like', $char . '%')->orderBy('name')->paginate(10);
         } else {
             $players = Player::orderBy('name')->paginate(10);
         }
