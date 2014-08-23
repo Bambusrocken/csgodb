@@ -1,11 +1,19 @@
-<?php
+<?php namespace Cdb\Player;
 
-class Player extends \Eloquent {
+use Cdb\Core\BaseModel;
+use McCool\LaravelAutoPresenter\PresenterInterface;
+
+class Player extends BaseModel implements PresenterInterface {
 	protected $fillable = [];
 
     public function team()
     {
-        return $this->belongsTo('Team');
+        return $this->belongsTo('Cdb\Team\Team');
+    }
+
+    public function teamtournamentrecords()
+    {
+        return $this->belongsToMany('Cdb\TeamTournament\TeamTournament', 'player_team_tournament', 'player_id', 'team_tournament_id');
     }
 
     public function playerteamrecords()
@@ -30,5 +38,10 @@ class Player extends \Eloquent {
         }
 
         return $query->get();
+    }
+
+    public function getPresenter()
+    {
+        return 'Cdb\Player\PlayerPresenter';
     }
 }

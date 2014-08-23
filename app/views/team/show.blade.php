@@ -18,6 +18,12 @@
         @if(count($team->playerteamrecords))
             <li><a href="#prev_players" role="tab" data-toggle="tab">Previous players</a></li>
         @endif
+        @if(count($team->teamtournamentrecords))
+            <li><a href="#tournaments" role="tab" data-toggle="tab">Tournaments</a></li>
+        @endif
+        @if(count($matches))
+            <li><a href="#matches" role="tab" data-toggle="tab">Matches</a></li>
+        @endif
     </ul>
 
     <!-- Tab panes -->
@@ -47,6 +53,14 @@
                 <p></p>
                 @include('playerteamrecord._table', ['records' => $team->playerteamrecords, 'hideTeam' => true])
             @endif
+        </div>
+
+        <div class="tab-pane" id="tournaments">
+            @include('teamtournament._table', ['teamtournamentrecords' => $team->teamtournamentrecords, 'hideTeam' => true])
+        </div>
+
+        <div class="tab-pane" id="matches">
+            @include('match._table', ['matches' => $matches, 'hideTournament' => true])
         </div>
     </div>
 @stop

@@ -21,6 +21,15 @@ Route::get('team/{slug}', ['as' => 'team.show', 'uses' => 'TeamController@show']
 Route::get('players/{char?}', ['as' => 'player.index', 'uses' => 'PlayerController@index']);
 Route::get('player/{slug}', ['as' => 'player.show', 'uses' => 'PlayerController@show']);
 
+// Tournament
+Route::get('tournaments', ['as' => 'tournament.index', 'uses' => 'TournamentController@index']);
+Route::get('tournament/{slug}', ['as' => 'tournament.show', 'uses' => 'TournamentController@show']);
+Route::get('tournament/{slug}/{teamslug}', ['as' => 'tournament.team.show', 'uses' => 'TeamTournamentController@show']);
+
+// Matches
+Route::get('matches', ['as' => 'match.index', 'uses' => 'MatchController@index']);
+Route::get('match/{slug}', ['as' => 'match.show', 'uses' => 'MatchController@show']);
+
 // Search
 Route::post('search', ['as' => 'search.store', 'uses' => 'SearchController@store']);
 Route::get('search/{term}', ['as' => 'search.index', 'uses' => 'SearchController@index']);

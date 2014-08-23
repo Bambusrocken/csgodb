@@ -1,17 +1,19 @@
 <?php
 
-class PlayerTeamRecord extends \Eloquent {
+use Cdb\Core\BaseModel;
+use McCool\LaravelAutoPresenter\PresenterInterface;
+
+class PlayerTeamRecord extends BaseModel {
 	protected $fillable = [];
     protected $table = 'playerteamrecords';
 
     public function player()
     {
-        return $this->belongsTo('Player');
+        return $this->belongsTo('Cdb\Player\Player');
     }
 
     public function team()
     {
-        return $this->belongsTo('Team');
+        return $this->belongsTo('Cdb\Team\Team');
     }
-
 }

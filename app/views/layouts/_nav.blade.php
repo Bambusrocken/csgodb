@@ -17,6 +17,8 @@
         <li><a href="{{ URL::route('home') }}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
         <li><a href="{{ URL::route('team.index') }}"><span class="glyphicon glyphicon-fire"></span> Teams</a></li>
         <li><a href="{{ URL::route('player.index') }}"><span class="glyphicon glyphicon-user"></span> Players</a></li>
+        <li><a href="{{ URL::route('tournament.index') }}"><span class="glyphicon glyphicon-th"></span> Tournaments</a></li>
+        <li><a href="{{ URL::route('match.index') }}"><span class="glyphicon glyphicon-retweet"></span> Matches</a></li>
       </ul>
       {{ Form::open(['route' => 'search.store', 'class' => 'navbar-form navbar-left']) }}
         <div class="form-group">

@@ -1,6 +1,7 @@
 <?php
 
 // Composer: "fzaninotto/faker": "v1.4.0"
+use Cdb\Player\Player;
 use Faker\Factory as Faker;
 use Illuminate\Support\Str;
 
@@ -8,6 +9,8 @@ class PlayersTableSeeder extends Seeder {
 
 	public function run()
 	{
+        DB::statement("SET foreign_key_checks = 0");
+
         Player::truncate();
 
         $players = array();
@@ -258,6 +261,21 @@ class PlayersTableSeeder extends Seeder {
             'team_id' => 6,
         ];
 
+        // Ex-fnatic
+        $players[] = [
+            'name' => 'Devilwalk',
+            'firstname' => 'Jonatan',
+            'lastname' => 'Lundberg',
+            'country' => 'se',
+        ];
+
+        $players[] = [
+            'name' => 'schneider',
+            'firstname' => 'Andreas',
+            'lastname' => 'Lindberg',
+            'country' => 'se',
+        ];
+
 
         /* template
         $players[] = [
@@ -274,7 +292,7 @@ class PlayersTableSeeder extends Seeder {
             $this->createPlayer($player);
         }
 
-
+        DB::statement("SET foreign_key_checks = 1");
 	}
 
     private function createPlayer($player)

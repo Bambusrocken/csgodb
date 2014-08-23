@@ -2,6 +2,7 @@
 
 // Composer: "fzaninotto/faker": "v1.4.0"
 use Carbon\Carbon;
+use Cdb\Team\Teamname;
 use Faker\Factory as Faker;
 
 class TeamnamesTableSeeder extends Seeder {

@@ -1,6 +1,21 @@
 <?php
 
+use Cdb\Player\Player;
+
 class PlayerController extends \BaseController {
+
+    /**
+     * @var
+     */
+    protected $player;
+
+    /**
+     * @param \Cdb\Player\Player $player
+     */
+    public function __construct(Player $player)
+    {
+        $this->player = $player;
+    }
 
 	/**
 	 * Display a listing of the resource.
@@ -12,7 +27,7 @@ class PlayerController extends \BaseController {
 	{
         $chars = [];
 
-        $players = Player::lists('name');
+        $players = $this->player->lists('name');
         foreach($players as $player) {
             $chars[] = strtolower(substr($player, 0, 1));
         }
@@ -21,9 +36,9 @@ class PlayerController extends \BaseController {
         sort($chars);
 
         if($char) {
-            $players = Player::where('name', 'like', $char . '%')->orderBy('name')->paginate(10);
+            $players = $this->player->with('team')->where('name', 'like', $char . '%')->orderBy('name')->paginate(10);
         } else {
-            $players = Player::orderBy('name')->paginate(10);
+            $players = $this->player->with('team')->orderBy('name')->paginate(10);
         }
 
         $this->view('player.index', compact('players', 'chars'));
@@ -60,7 +75,7 @@ class PlayerController extends \BaseController {
 	 */
 	public function show($slug)
 	{
-		$player = Player::findBySlug($slug);
+		$player = $this->player->findBySlug($slug);
         $this->view('player.show', compact('player'));
 	}
 

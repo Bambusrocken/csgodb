@@ -1,45 +1,39 @@
 <?php
 
-use Cdb\Match\Match;
-use Cdb\Team\Team;
+use Cdb\Tournament\Tournament;
 
-class TeamController extends \BaseController {
+class TournamentController extends \BaseController {
 
     /**
      * @var
      */
-    protected $team;
-    /**
-     * @var Match
-     */
-    private $match;
+    protected $tournament;
 
     /**
      * Constructor
      *
-     * @param Team $team
+     * @param Tournament $tournament
      */
-    public function __construct(Team $team, Match $match)
+    function __construct(Tournament $tournament)
     {
-        $this->team = $team;
-        $this->match = $match;
+        $this->tournament = $tournament;
     }
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /team
+	 * GET /tournament
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-        $teams = $this->team->orderBy('name')->paginate(10);
-        $this->view('team.index', compact('teams'));
+		$tournaments = $this->tournament->orderBy('start_date', 'desc')->get();
+        $this->view('tournament.index', compact('tournaments'));
 	}
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /team/create
+	 * GET /tournament/create
 	 *
 	 * @return Response
 	 */
@@ -50,7 +44,7 @@ class TeamController extends \BaseController {
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /team
+	 * POST /tournament
 	 *
 	 * @return Response
 	 */
@@ -61,22 +55,20 @@ class TeamController extends \BaseController {
 
 	/**
 	 * Display the specified resource.
-	 * GET /team/{id}
+	 * GET /tournament/{id}
 	 *
 	 * @param  string  $slug
 	 * @return Response
 	 */
 	public function show($slug)
 	{
-		$team = $this->team->findBySlug($slug);
-        $matches = $this->match->where('home_team_id', $team->id)->orWhere('away_team_id', $team->id)->get();
-
-        $this->view('team.show', compact('team', 'matches'));
+		$tournament = $this->tournament->findBySlug($slug);
+        $this->view('tournament.show', compact('tournament'));
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /team/{id}/edit
+	 * GET /tournament/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -88,7 +80,7 @@ class TeamController extends \BaseController {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /team/{id}
+	 * PUT /tournament/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -100,7 +92,7 @@ class TeamController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /team/{id}
+	 * DELETE /tournament/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
