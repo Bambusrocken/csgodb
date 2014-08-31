@@ -2,8 +2,8 @@
 
 use McCool\LaravelAutoPresenter\BasePresenter;
 
-class TeamPresenter extends BasePresenter {
-
+class TeamPresenter extends BasePresenter
+{
     public function __construct(Team $team)
     {
         $this->resource = $team;
@@ -19,5 +19,4 @@ class TeamPresenter extends BasePresenter {
 
         return $name;
     }
-
 } 

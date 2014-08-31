@@ -34,5 +34,4 @@ class MatchController extends BaseController
         $match = $this->match->findBySlug($slug);
         $this->view('match.show', compact('match'));
     }
-
 }

@@ -16,8 +16,8 @@ class MatchCenter
     public function matchStats($teamId)
     {
         $stats = [
-            'won' => 0,
-            'lost' => 0,
+            'won'   => 0,
+            'lost'  => 0,
             'drawn' => 0,
         ];
 
@@ -46,8 +46,8 @@ class MatchCenter
     public function gameStats($teamId)
     {
         $stats = [
-            'won' => 0,
-            'lost' => 0,
+            'won'   => 0,
+            'lost'  => 0,
             'drawn' => 0,
         ];
 
@@ -60,7 +60,7 @@ class MatchCenter
                     $stats['won'] = $stats['won'] + 1;
                 } elseif ($game->$teamScoreField < $game->$otherScoreField) {
                     $stats['lost'] = $stats['lost'] + 1;
-                } elseif ($game->$teamScoreField && $game->$teamScoreField == $game->$otherScoreField ) {
+                } elseif ($game->$teamScoreField && $game->$teamScoreField == $game->$otherScoreField) {
                     $stats['drawn'] = $stats['drawn'] + 1;
                 }
             }
@@ -93,7 +93,7 @@ class MatchCenter
             }
         }
 
-        usort($stats, function($a, $b) {
+        usort($stats, function ($a, $b) {
             return $a['count'] < $b['count'];
         });
 

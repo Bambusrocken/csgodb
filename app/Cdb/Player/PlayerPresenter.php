@@ -2,8 +2,8 @@
 
 use McCool\LaravelAutoPresenter\BasePresenter;
 
-class PlayerPresenter extends BasePresenter {
-
+class PlayerPresenter extends BasePresenter
+{
     public function __construct(Player $player)
     {
         $this->resource = $player;

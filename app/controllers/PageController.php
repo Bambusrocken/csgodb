@@ -11,5 +11,4 @@ class PageController extends BaseController
     {
         $this->view('layouts.search');
     }
-
 }

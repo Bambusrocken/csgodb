@@ -1,12 +1,11 @@
 <?php namespace Cdb\Team;
 
 use Cdb\Core\BaseModel;
-use Cdb\Match\Match;
-use Illuminate\Database\Eloquent\Model;
 use McCool\LaravelAutoPresenter\PresenterInterface;
 
-class Team extends BaseModel implements PresenterInterface {
-	protected $fillable = [];
+class Team extends BaseModel implements PresenterInterface
+{
+    protected $fillable = [];
 
     public function players()
     {
@@ -26,9 +25,10 @@ class Team extends BaseModel implements PresenterInterface {
     public function tournaments()
     {
         $tournaments = [];
-        foreach($this->teamtournamentrecords as $teamtournamentrecord) {
+        foreach ($this->teamtournamentrecords as $teamtournamentrecord) {
             $tournaments[] = $teamtournamentrecord->tournament;
         }
+
         return $tournaments;
     }
 
@@ -42,15 +42,15 @@ class Team extends BaseModel implements PresenterInterface {
         return static::with('teamtournamentrecords', 'teamtournamentrecords.tournament')->where('slug', $slug)->first();
     }
 
-    public static function search($q) {
+    public static function search($q)
+    {
         $searchTerms = explode(' ', $q);
 
         $instance = new static;
         $query = $instance->newQuery();
 
-        foreach($searchTerms as $term)
-        {
-            $query->where('name', 'LIKE', '%'. $term .'%')->orWhere('tag', 'like', '%' . $term . '%');
+        foreach ($searchTerms as $term) {
+            $query->where('name', 'LIKE', '%' . $term . '%')->orWhere('tag', 'like', '%' . $term . '%');
         }
 
         return $query->get();

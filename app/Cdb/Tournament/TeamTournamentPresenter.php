@@ -2,8 +2,8 @@
 
 use Cdb\Core\BasePresenter;
 
-class TeamTournamentPresenter extends BasePresenter {
-
+class TeamTournamentPresenter extends BasePresenter
+{
     public function __construct(TeamTournament $teamtournament)
     {
         $this->resource = $teamtournament;
