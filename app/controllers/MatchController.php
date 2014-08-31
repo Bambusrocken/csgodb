@@ -2,8 +2,8 @@
 
 use Cdb\Match\Match;
 
-class MatchController extends \BaseController {
-
+class MatchController extends \BaseController
+{
     /**
      * @var
      */
@@ -21,18 +21,18 @@ class MatchController extends \BaseController {
      *
      */
     public function index()
-	{
-        $matches = $this->match->all();
+    {
+        $matches = $this->match->get();
         $this->view('match.index', compact('matches'));
-	}
+    }
 
     /**
      * @param $slug
      */
     public function show($slug)
-	{
+    {
         $match = $this->match->findBySlug($slug);
         $this->view('match.show', compact('match'));
-	}
+    }
 
 }

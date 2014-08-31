@@ -2,11 +2,7 @@
 @section('subtitle', $team->tag)
 
 @section('content-top')
-    <ol class="breadcrumb">
-      <li>{{ link_to_route('home', 'Home') }}</li>
-      <li>{{ link_to_route('team.index', 'Teams') }}</li>
-      <li class="active">{{ $team->name }}</li>
-    </ol>
+    @include('layouts._breadcrumbs', ['breadcrumbs' => [link_to_route('team.index', 'Teams'), $team->name]])
 @stop
 
 @section('content')
@@ -56,11 +52,13 @@
         </div>
 
         <div class="tab-pane" id="tournaments">
+            <p></p>
+            <p><strong>Total money won:</strong> {{ $totalPriceMoney }}</p>
             @include('teamtournament._table', ['teamtournamentrecords' => $team->teamtournamentrecords, 'hideTeam' => true])
         </div>
 
         <div class="tab-pane" id="matches">
-            @include('match._table', ['matches' => $matches, 'hideTournament' => true])
+            @include('match._table', ['matches' => $matches, 'teamId' => $team->id])
         </div>
     </div>
 @stop

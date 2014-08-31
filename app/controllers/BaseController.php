@@ -1,20 +1,18 @@
 <?php
 
-class BaseController extends Controller {
-
+class BaseController extends Controller
+{
     protected $layout = 'layouts.default';
 
     public function __construct()
     {
         $this->beforeFilter('csrf', ['on' => 'post', 'patch', 'delete']);
 
-        $this->beforeFilter(function()
-        {
+        $this->beforeFilter(function () {
             Event::fire('clockwork.controller.start');
         });
 
-        $this->afterFilter(function()
-        {
+        $this->afterFilter(function () {
             Event::fire('clockwork.controller.end');
         });
     }
@@ -35,8 +33,7 @@ class BaseController extends Controller {
      */
     protected function setupLayout()
     {
-        if ( ! is_null($this->layout))
-        {
+        if (!is_null($this->layout)) {
             $this->layout = View::make($this->layout);
         }
     }

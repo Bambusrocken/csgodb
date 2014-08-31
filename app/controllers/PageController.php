@@ -1,7 +1,7 @@
 <?php
 
-class PageController extends BaseController {
-
+class PageController extends BaseController
+{
     public function home()
     {
         $this->view('layouts.home');

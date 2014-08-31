@@ -21,6 +21,8 @@ class CreateTeamTournamentTable extends Migration {
 			$table->foreign('tournament_id')->references('id')->on('tournaments')->onDelete('cascade');
             $table->integer('place');
             $table->float('price');
+            $table->string('group');
+            $table->integer('seed');
 			$table->timestamps();
 		});
 	}

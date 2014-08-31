@@ -1,7 +1,7 @@
 <?php namespace Cdb\TeamTournament;
 
+use Cdb\Core\BasePresenter;
 use Cdb\Tournament\Tournament;
-use McCool\LaravelAutoPresenter\BasePresenter;
 use Request;
 
 class TeamTournamentPresenter extends BasePresenter {
@@ -24,5 +24,10 @@ class TeamTournamentPresenter extends BasePresenter {
         }
 
         return $place;
+    }
+
+    public function price()
+    {
+        return $this->money($this->resource->price);
     }
 } 

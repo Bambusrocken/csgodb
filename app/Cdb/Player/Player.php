@@ -3,8 +3,11 @@
 use Cdb\Core\BaseModel;
 use McCool\LaravelAutoPresenter\PresenterInterface;
 
-class Player extends BaseModel implements PresenterInterface {
-	protected $fillable = [];
+class Player extends BaseModel implements PresenterInterface
+{
+    protected $fillable = [];
+
+    protected $with = ['team'];
 
     public function team()
     {
@@ -26,15 +29,15 @@ class Player extends BaseModel implements PresenterInterface {
         return static::where('slug', $slug)->first();
     }
 
-    public static function search($q) {
+    public static function search($q)
+    {
         $searchTerms = explode(' ', $q);
 
         $instance = new static;
         $query = $instance->newQuery();
 
-        foreach($searchTerms as $term)
-        {
-            $query->where('name', 'LIKE', '%'. $term .'%')->orWhere('firstname', 'like', '%' . $term . '%')->orWhere('lastname', 'like', '%' . $term . '%');
+        foreach ($searchTerms as $term) {
+            $query->where('name', 'LIKE', '%' . $term . '%')->orWhere('firstname', 'like', '%' . $term . '%')->orWhere('lastname', 'like', '%' . $term . '%');
         }
 
         return $query->get();

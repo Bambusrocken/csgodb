@@ -107,12 +107,12 @@ class TeamsTableSeeder extends Seeder {
 
         $teams[] = [
             'name' => 'Vox Eminor',
-            'tag' => 'VE',
+            'tag' => 'VOXEMINOR',
             'country' => 'au',
         ];
 
         $teams[] = [
-            'name' => 'Wolf',
+            'name' => 'MTS GameGod Wolf',
             'tag' => 'Wolf',
             'country' => 'in',
         ];

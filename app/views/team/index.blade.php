@@ -1,10 +1,7 @@
 @section('subtitle', 'Teams')
 
 @section('content-top')
-    <ol class="breadcrumb">
-        <li>{{ link_to_route('home', 'Home') }}</li>
-        <li class="active">Teams</li>
-    </ol>
+    @include('layouts._breadcrumbs', ['breadcrumbs' => ['Teams']])
 @stop
 
 @section('content')

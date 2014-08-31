@@ -11,7 +11,7 @@
             <tr>
                 <td>{{ link_to_route('team.show', $team->name, $team->slug) }}</td>
                 <td>{{{ $team->tag }}}</td>
-                <td>{{ Countries::getOne($team->country, 'en', 'icu') }}</td>
+                <td>{{ HTML::image(asset('img/flags/' . $team->country . '.gif')) }} {{ Countries::getOne($team->country, 'en', 'icu') }}</td>
             </tr>
         @endforeach
     </tbody>

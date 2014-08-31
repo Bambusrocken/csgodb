@@ -1,24 +1,32 @@
 @section('title', $player->name)
-@section('subtitle', $player->firstname . ' ' . $player->lastname)
+@section('subtitle', $player->fullName)
 
 @section('content-top')
-    <ol class="breadcrumb">
-      <li>{{ link_to_route('home', 'Home') }}</li>
-      <li>{{ link_to_route('player.index', 'Players') }}</li>
-      <li class="active">{{ $player->name }}</li>
-    </ol>
+    @include('layouts._breadcrumbs', ['breadcrumbs' => [link_to_route('player.index', 'Players'), $player->name]])
 @stop
 
 @section('content')
-    @if($player->team)
-        <div><strong>Current team:</strong> {{ link_to_route('team.show', $player->team->name, $player->team->slug) }}</div>
-    @endif
-    <div><strong>Country:</strong> {{ Countries::getOne($player->country, 'en', 'icu') }}</div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Info</div>
+        <ul class="list-group">
+            @if($player->team)
+                <li class="list-group-item"><strong>Current team:</strong> {{ link_to_route('team.show', $player->team->name, $player->team->slug) }}</li>
+            @endif
+            <li class="list-group-item"><strong>Country:</strong> {{ Countries::getOne($player->country, 'en', 'icu') }}</li>
+        </ul>
+    </div>
 
-    @if(count($player->playerteamrecords))
-        <h2>Previous teams</h2>
-        @include('playerteamrecord._table', ['records' => $player->playerteamrecords, 'hidePlayer' => true])
-    @endif
+    <div class="panel panel-default">
+        <div class="panel-heading">Previous teams</div>
+        <div class="panel-body">
+            @if(count($player->playerteamrecords))
+                @include('playerteamrecord._table', ['records' => $player->playerteamrecords, 'hidePlayer' => true])
+            @endif
+        </div>
+    </div>
 
-    @include('teamtournament._table', ['teamtournamentrecords' => $player->teamtournamentrecords])
+    <div class="panel panel-default">
+        <div class="panel-heading">Tournaments</div>
+        @include('teamtournament._table', ['teamtournamentrecords' => $player->teamtournamentrecords])
+    </div>
 @stop

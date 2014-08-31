@@ -1,11 +1,9 @@
 <?php namespace Cdb\Tournament;
 
-use McCool\LaravelAutoPresenter\BasePresenter;
-use NumberFormatter;
-use Cdb\Tournament\Tournament;
+use Cdb\Core\BasePresenter;
 
-class TournamentPresenter extends BasePresenter {
-
+class TournamentPresenter extends BasePresenter
+{
     protected $standardFormat = 'd F Y';
 
     public function __construct(Tournament $tournament)
@@ -30,7 +28,6 @@ class TournamentPresenter extends BasePresenter {
 
     public function pricepool()
     {
-        setlocale(LC_MONETARY, 'en_US.UTF-8');
-        return money_format('%.0n', $this->resource->pricepool);
+        return $this->money($this->resource->pricepool);
     }
 }

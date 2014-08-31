@@ -12,7 +12,7 @@
             <tr>
                 <td>{{ link_to_route('tournament.show', $tournament->name, $tournament->slug) }}</td>
                 <td>{{ $tournament->date }}</td>
-                <td>{{-- money_format('%.0n', $tournament->pricepool) --}}</td>
+                <td>{{ $tournament->pricepool }}</td>
                 <td>{{ $tournament->location }}</td>
             </tr>
         @endforeach

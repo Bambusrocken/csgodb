@@ -1,28 +1,36 @@
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>Match</th>
-            <th>Score</th>
-            @if(empty($hideTournament))
-                <th>Tournament</th>
-            @endif
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($matches as $match)
+@if(count($matches))
+    <table class="table table-hover">
+        <thead>
             <tr>
-                <td>{{ link_to_route('match.show', $match->name, $match->slug) }}</td>
-                <td>
-                    {{ $match->home_team_score }} - {{ $match->away_team_score }}
-                </td>
+                @if(isset($teamId))
+                    <th>Result</th>
+                @endif
+                <th>Match</th>
+                <th>Score</th>
                 @if(empty($hideTournament))
-                    <td>{{ link_to_route('tournament.show', $match->tournament->name, $match->tournament->slug) }}</td>
+                    <th>Tournament</th>
                 @endif
             </tr>
-        @endforeach
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach($matches as $match)
+                <tr>
+                    @if(isset($teamId))
+                        <td>{{ $match->result($teamId) }}</td>
+                    @endif
+                    <td>{{ link_to_route('match.show', $match->name(isset($teamId) ? $teamId : null), $match->slug) }}</td>
+                    <td>{{ $match->score(isset($teamId) ? $teamId : null) }}</td>
+                    @if(empty($hideTournament))
+                        <td>{{ link_to_route('tournament.show', $match->tournament->name, $match->tournament->slug) }}</td>
+                    @endif
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 
-@if(method_exists($matches, 'links'))
-    {{ $matches->links() }}
+    @if(method_exists($matches, 'links'))
+        {{ $matches->links() }}
+    @endif
+@else
+    No match records.
 @endif
