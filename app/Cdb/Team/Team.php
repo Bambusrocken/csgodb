@@ -20,7 +20,7 @@ class Team extends BaseModel implements PresenterInterface {
 
     public function teamtournamentrecords()
     {
-        return $this->hasMany('Cdb\TeamTournament\TeamTournament');
+        return $this->hasMany('Cdb\Tournament\TeamTournament');
     }
 
     public function tournaments()

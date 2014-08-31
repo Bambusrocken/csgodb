@@ -11,8 +11,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Info</div>
                 <ul class="list-group">
-                    <li class="list-group-item"><strong>Place:</strong> {{ $teamtournament->place }}</li>
-                    <li class="list-group-item"><strong>Price money:</strong> {{ $teamtournament->price }}</li>
+                    <li class="list-group-item"><strong>Place:</strong> {{ $teamTournament->place }}</li>
+                    <li class="list-group-item"><strong>Price money:</strong> {{ $teamTournament->price }}</li>
                 </ul>
             </div>
             <div class="panel panel-default">
@@ -62,7 +62,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Players</div>
                 <div class="panel-body">
-                    @include('player._table', ['players' => $teamtournament->players])
+                    @include('player._table', ['players' => $teamTournament->players])
                 </div>
             </div>
         </div>

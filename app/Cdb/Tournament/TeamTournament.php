@@ -1,11 +1,11 @@
-<?php namespace Cdb\TeamTournament;
+<?php namespace Cdb\Tournament;
 
 use Cdb\Core\BaseModel;
 use McCool\LaravelAutoPresenter\PresenterInterface;
 
-class TeamTournament extends BaseModel implements PresenterInterface {
-
-	protected $fillable = [];
+class TeamTournament extends BaseModel implements PresenterInterface
+{
+    protected $fillable = [];
     protected $table = 'team_tournament';
 
     public function team()
@@ -30,6 +30,6 @@ class TeamTournament extends BaseModel implements PresenterInterface {
      */
     public function getPresenter()
     {
-        return 'Cdb\TeamTournament\TeamTournamentPresenter';
+        return 'Cdb\Tournament\TeamTournamentPresenter';
     }
 }

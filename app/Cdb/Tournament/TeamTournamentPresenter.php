@@ -1,8 +1,6 @@
-<?php namespace Cdb\TeamTournament;
+<?php namespace Cdb\Tournament;
 
 use Cdb\Core\BasePresenter;
-use Cdb\Tournament\Tournament;
-use Request;
 
 class TeamTournamentPresenter extends BasePresenter {
 

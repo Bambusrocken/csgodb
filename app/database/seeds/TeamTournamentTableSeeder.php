@@ -1,8 +1,6 @@
 <?php
 
-// Composer: "fzaninotto/faker": "v1.4.0"
-use Cdb\TeamTournament\TeamTournament;
-use Faker\Factory as Faker;
+use Cdb\Tournament\TeamTournament;
 
 class TeamTournamentTableSeeder extends Seeder {
 

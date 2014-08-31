@@ -3,7 +3,7 @@
 use Cdb\Match\Match;
 use Cdb\Match\MatchCenter;
 use Cdb\Team\Team;
-use Cdb\TeamTournament\TeamTournament;
+use Cdb\Tournament\TeamTournament;
 use Cdb\Tournament\Tournament;
 
 class TeamTournamentController extends BaseController
@@ -36,13 +36,17 @@ class TeamTournamentController extends BaseController
     /**
      * Constructor
      *
+     * @param Tournament $tournament
+     * @param Team $team
      * @param TeamTournament $teamTournament
+     * @param Match $match
+     * @param MatchCenter $matchCenter
      */
     public function __construct(Tournament $tournament, Team $team, TeamTournament $teamTournament, Match $match, MatchCenter $matchCenter)
     {
         $this->tournament = $tournament;
         $this->team = $team;
-        $this->$teamTournament = $teamTournament;
+        $this->teamTournament = $teamTournament;
         $this->match = $match;
         $this->matchCenter = $matchCenter;
     }

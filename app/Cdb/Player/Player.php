@@ -16,7 +16,7 @@ class Player extends BaseModel implements PresenterInterface
 
     public function teamtournamentrecords()
     {
-        return $this->belongsToMany('Cdb\TeamTournament\TeamTournament', 'player_team_tournament', 'player_id', 'team_tournament_id');
+        return $this->belongsToMany('Cdb\Tournament\TeamTournament', 'player_team_tournament', 'player_id', 'team_tournament_id');
     }
 
     public function playerteamrecords()

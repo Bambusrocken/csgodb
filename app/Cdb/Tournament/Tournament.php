@@ -1,15 +1,15 @@
 <?php namespace Cdb\Tournament;
 
 use Cdb\Core\BaseModel;
-use Illuminate\Database\Eloquent\Model;
 use McCool\LaravelAutoPresenter\PresenterInterface;
 
-class Tournament extends BaseModel implements PresenterInterface {
-	protected $fillable = [];
+class Tournament extends BaseModel implements PresenterInterface
+{
+    protected $fillable = [];
 
     public function teamtournamentrecords()
     {
-        return $this->hasMany('Cdb\TeamTournament\TeamTournament')->orderBy('place');
+        return $this->hasMany('Cdb\Tournament\TeamTournament')->orderBy('place');
     }
 
     public function matches()
@@ -20,7 +20,7 @@ class Tournament extends BaseModel implements PresenterInterface {
     public function teams()
     {
         $teams = [];
-        foreach($this->teamtournamentrecords as $teamtournamentrecord) {
+        foreach ($this->teamtournamentrecords as $teamtournamentrecord) {
             $teams[] = $teamtournamentrecord->team;
         }
         return $teams;
@@ -29,10 +29,10 @@ class Tournament extends BaseModel implements PresenterInterface {
     public function players()
     {
         $players = [];
-        foreach($this->teamtournamentrecords as $teamtournamentrecord) {
-             foreach($teamtournamentrecord->players as $player) {
-                 $players[] = $player;
-             }
+        foreach ($this->teamtournamentrecords as $teamtournamentrecord) {
+            foreach ($teamtournamentrecord->players as $player) {
+                $players[] = $player;
+            }
         }
         return $players;
     }

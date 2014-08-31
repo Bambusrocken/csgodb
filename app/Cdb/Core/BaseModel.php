@@ -1,7 +1,6 @@
 <?php namespace Cdb\Core;
 
 use Eloquent;
-use Illuminate\Database\Eloquent\Model;
 
 class BaseModel extends Eloquent {
 
