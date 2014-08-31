@@ -2,7 +2,7 @@
 
 use Cdb\Player\Player;
 
-class PlayerController extends \BaseController
+class PlayerController extends BaseController
 {
     /**
      * @var

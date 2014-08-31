@@ -2,7 +2,7 @@
 
 use Cdb\Match\Match;
 
-class MatchController extends \BaseController
+class MatchController extends BaseController
 {
     /**
      * @var
