@@ -14,14 +14,14 @@ class Player extends BaseModel implements PresenterInterface
         return $this->belongsTo('Cdb\Team\Team');
     }
 
-    public function teamtournamentrecords()
+    public function teamTournamentRecords()
     {
         return $this->belongsToMany('Cdb\Tournament\TeamTournament', 'player_team_tournament', 'player_id', 'team_tournament_id');
     }
 
-    public function playerteamrecords()
+    public function playerTeamRecords()
     {
-        return $this->hasMany('Playerteamrecord');
+        return $this->hasMany('Cdb\Player\PlayerTeamRecord');
     }
 
     public static function findBySlug($slug)

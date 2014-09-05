@@ -1,7 +1,6 @@
 <?php
 
 use Cdb\Core\BaseModel;
-use McCool\LaravelAutoPresenter\PresenterInterface;
 
 class PlayerTeamRecord extends BaseModel {
 	protected $fillable = [];

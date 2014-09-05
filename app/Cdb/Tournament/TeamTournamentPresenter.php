@@ -4,9 +4,9 @@ use Cdb\Core\BasePresenter;
 
 class TeamTournamentPresenter extends BasePresenter
 {
-    public function __construct(TeamTournament $teamtournament)
+    public function __construct(TeamTournament $teamTournament)
     {
-        $this->resource = $teamtournament;
+        $this->resource = $teamTournament;
     }
 
     public function place()

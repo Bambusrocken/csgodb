@@ -18,6 +18,7 @@ class TeamController extends BaseController
      * Constructor
      *
      * @param Team $team
+     * @param Match $match
      */
     public function __construct(Team $team, Match $match)
     {

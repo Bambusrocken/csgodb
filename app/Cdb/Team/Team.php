@@ -12,12 +12,12 @@ class Team extends BaseModel implements PresenterInterface
         return $this->hasMany('Cdb\Player\Player');
     }
 
-    public function playerteamrecords()
+    public function playerTeamRecords()
     {
-        return $this->hasMany('PlayerTeamRecord');
+        return $this->hasMany('Cdb\Player\PlayerTeamRecord');
     }
 
-    public function teamtournamentrecords()
+    public function teamTournamentRecords()
     {
         return $this->hasMany('Cdb\Tournament\TeamTournament');
     }
@@ -25,21 +25,21 @@ class Team extends BaseModel implements PresenterInterface
     public function tournaments()
     {
         $tournaments = [];
-        foreach ($this->teamtournamentrecords as $teamtournamentrecord) {
-            $tournaments[] = $teamtournamentrecord->tournament;
+        foreach ($this->teamTournamentRecords as $teamTournamentRecord) {
+            $tournaments[] = $teamTournamentRecord->tournament;
         }
 
         return $tournaments;
     }
 
-    public function teamnames()
+    public function teamNames()
     {
-        return $this->hasMany('Cdb\Team\Teamname');
+        return $this->hasMany('Cdb\Team\TeamName');
     }
 
     public static function findBySlug($slug)
     {
-        return static::with('teamtournamentrecords', 'teamtournamentrecords.tournament')->where('slug', $slug)->first();
+        return static::with('teamTournamentRecords', 'teamTournamentRecords.tournament')->where('slug', $slug)->first();
     }
 
     public static function search($q)

@@ -7,7 +7,7 @@ class Tournament extends BaseModel implements PresenterInterface
 {
     protected $fillable = [];
 
-    public function teamtournamentrecords()
+    public function teamTournamentRecords()
     {
         return $this->hasMany('Cdb\Tournament\TeamTournament')->orderBy('place');
     }
@@ -20,8 +20,8 @@ class Tournament extends BaseModel implements PresenterInterface
     public function teams()
     {
         $teams = [];
-        foreach ($this->teamtournamentrecords as $teamtournamentrecord) {
-            $teams[] = $teamtournamentrecord->team;
+        foreach ($this->teamTournamentRecords as $teamTournamentRecord) {
+            $teams[] = $teamTournamentRecord->team;
         }
 
         return $teams;
@@ -30,8 +30,8 @@ class Tournament extends BaseModel implements PresenterInterface
     public function players()
     {
         $players = [];
-        foreach ($this->teamtournamentrecords as $teamtournamentrecord) {
-            foreach ($teamtournamentrecord->players as $player) {
+        foreach ($this->teamTournamentRecords as $teamTournamentRecord) {
+            foreach ($teamTournamentRecord->players as $player) {
                 $players[] = $player;
             }
         }
@@ -41,7 +41,7 @@ class Tournament extends BaseModel implements PresenterInterface
 
     public static function findBySlug($slug)
     {
-        return static::with('teamtournamentrecords', 'teamtournamentrecords.team')->where('slug', $slug)->first();
+        return static::with('teamTournamentRecords', 'teamTournamentRecords.team')->where('slug', $slug)->first();
     }
 
     public function getDates()

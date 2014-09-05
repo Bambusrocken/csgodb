@@ -2,7 +2,7 @@
 
 use Cdb\Core\BaseModel;
 
-class Teamname extends BaseModel
+class TeamName extends BaseModel
 {
     protected $fillable = [];
 

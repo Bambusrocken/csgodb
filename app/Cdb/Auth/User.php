@@ -1,4 +1,4 @@
-<?php
+<?php namespace Cdb\Auth;
 
 use Cdb\Core\BaseModel;
 use Illuminate\Auth\UserTrait;
