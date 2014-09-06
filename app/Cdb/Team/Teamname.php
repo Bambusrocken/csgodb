@@ -4,6 +4,7 @@ use Cdb\Core\BaseModel;
 
 class TeamName extends BaseModel
 {
+    protected $table = 'teamnames';
     protected $fillable = [];
 
     public function team()
