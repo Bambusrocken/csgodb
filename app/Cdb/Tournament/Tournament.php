@@ -30,6 +30,7 @@ class Tournament extends BaseModel implements PresenterInterface
     public function players()
     {
         $players = [];
+        
         foreach ($this->teamTournamentRecords as $teamTournamentRecord) {
             foreach ($teamTournamentRecord->players as $player) {
                 $players[] = $player;
