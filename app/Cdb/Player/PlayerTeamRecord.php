@@ -1,4 +1,4 @@
-<?php
+<?php namespace Cdb\Player;
 
 use Cdb\Core\BaseModel;
 
