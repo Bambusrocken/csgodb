@@ -2,16 +2,14 @@
     <thead>
         <tr>
             <th>Name</th>
-            <th>Tag</th>
-            <th>Country</th>
+            <th>Last Lineup</th>
         </tr>
     </thead>
     <tbody>
         @foreach($teams as $team)
             <tr>
-                <td>{{ link_to_route('team.show', $team->name, $team->slug) }}</td>
-                <td>{{{ $team->tag }}}</td>
-                <td>{{ HTML::image(asset('img/flags/' . $team->country . '.gif')) }} {{ Countries::getOne($team->country, 'en', 'icu') }}</td>
+                <td>{{ link_to_route('team.show', $team->name, $team->id) }}</td>
+                <td>{{ $team->lineups->first()->players->implode('name', ', ') }}</td>
             </tr>
         @endforeach
     </tbody>

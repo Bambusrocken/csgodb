@@ -1,8 +1,6 @@
 <?php
 
-// Composer: "fzaninotto/faker": "v1.4.0"
 use Cdb\Player\Player;
-use Faker\Factory as Faker;
 use Illuminate\Support\Str;
 
 class PlayersTableSeeder extends Seeder {
@@ -21,7 +19,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Adil',
             'lastname' => 'Benrlitom',
             'country' => 'be',
-            'team_id' => 1,
+            //'team_id' => 1,
         ];
 
         $players[] = [
@@ -29,7 +27,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Kévin',
             'lastname' => 'Droolans',
             'country' => 'be',
-            'team_id' => 1,
+            //'team_id' => 1,
         ];
 
         $players[] = [
@@ -37,7 +35,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Nathan',
             'lastname' => 'Schmitt',
             'country' => 'fr',
-            'team_id' => 1,
+            //'team_id' => 1,
         ];
 
         $players[] = [
@@ -45,7 +43,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Kenny',
             'lastname' => 'Schrub',
             'country' => 'fr',
-            'team_id' => 1,
+            //'team_id' => 1,
         ];
 
         $players[] = [
@@ -53,7 +51,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Edouard',
             'lastname' => 'Dubourdeaux',
             'country' => 'fr',
-            'team_id' => 1,
+            //'team_id' => 1,
         ];
 
         // NiP
@@ -62,7 +60,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Patrik',
             'lastname' => 'Lindberg',
             'country' => 'se',
-            'team_id' => 2,
+            //'team_id' => 2,
         ];
 
         $players[] = [
@@ -70,7 +68,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Christopher',
             'lastname' => 'Alesund',
             'country' => 'se',
-            'team_id' => 2,
+            //'team_id' => 2,
         ];
 
         $players[] = [
@@ -78,7 +76,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Adam',
             'lastname' => 'Friberg',
             'country' => 'se',
-            'team_id' => 2,
+            //'team_id' => 2,
         ];
 
         $players[] = [
@@ -86,7 +84,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Richard',
             'lastname' => 'Landström',
             'country' => 'se',
-            'team_id' => 2,
+            //'team_id' => 2,
         ];
 
         $players[] = [
@@ -94,7 +92,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Robin',
             'lastname' => 'Johansson',
             'country' => 'se',
-            'team_id' => 2,
+            //'team_id' => 2,
         ];
 
         // NaVi
@@ -103,7 +101,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Sergey',
             'lastname' => 'Ischuk',
             'country' => 'ua',
-            'team_id' => 3,
+            //'team_id' => 3,
         ];
 
         $players[] = [
@@ -111,7 +109,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Daniil',
             'lastname' => 'Teslenko',
             'country' => 'ua',
-            'team_id' => 3,
+            //'team_id' => 3,
         ];
 
         $players[] = [
@@ -119,7 +117,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Ioann',
             'lastname' => 'Sukhariev',
             'country' => 'ua',
-            'team_id' => 3,
+            //'team_id' => 3,
         ];
 
         $players[] = [
@@ -127,7 +125,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Ladislav',
             'lastname' => 'Kovacs',
             'country' => 'sk',
-            'team_id' => 3,
+            //'team_id' => 3,
         ];
 
         $players[] = [
@@ -135,7 +133,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Denis',
             'lastname' => 'Kostin',
             'country' => 'ru',
-            'team_id' => 3,
+            //'team_id' => 3,
         ];
 
         // mouz
@@ -144,7 +142,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Chris',
             'lastname' => 'de Jong',
             'country' => 'nl',
-            'team_id' => 4,
+            //'team_id' => 4,
         ];
 
         $players[] = [
@@ -152,7 +150,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Aleksi',
             'lastname' => 'Jalli',
             'country' => 'fi',
-            'team_id' => 4,
+            //'team_id' => 4,
         ];
 
         $players[] = [
@@ -160,7 +158,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Nikola',
             'lastname' => 'Ninic',
             'country' => 'rs',
-            'team_id' => 4,
+            //'team_id' => 4,
         ];
 
         $players[] = [
@@ -168,7 +166,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Andre',
             'lastname' => 'Utesch',
             'country' => 'de',
-            'team_id' => 4,
+            //'team_id' => 4,
         ];
 
         $players[] = [
@@ -176,7 +174,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Johannes',
             'lastname' => 'Wodarz',
             'country' => 'de',
-            'team_id' => 4,
+            //'team_id' => 4,
         ];
 
         // fnatic
@@ -185,7 +183,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Robin',
             'lastname' => 'Rönnquist',
             'country' => 'se',
-            'team_id' => 5,
+            //'team_id' => 5,
         ];
 
         $players[] = [
@@ -193,7 +191,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Jesper',
             'lastname' => 'Wecksell',
             'country' => 'se',
-            'team_id' => 5,
+            //'team_id' => 5,
         ];
 
         $players[] = [
@@ -201,7 +199,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Markus',
             'lastname' => 'Wallsten',
             'country' => 'se',
-            'team_id' => 5,
+            //'team_id' => 5,
         ];
 
         $players[] = [
@@ -209,7 +207,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Freddy',
             'lastname' => 'Johansson',
             'country' => 'se',
-            'team_id' => 5,
+            //'team_id' => 5,
         ];
 
         $players[] = [
@@ -217,7 +215,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Olof',
             'lastname' => 'Kajbjer',
             'country' => 'se',
-            'team_id' => 5,
+            //'team_id' => 5,
         ];
 
         // dignitas
@@ -226,7 +224,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Nicolai',
             'lastname' => 'Reedtz',
             'country' => 'dk',
-            'team_id' => 6,
+            //'team_id' => 6,
         ];
 
         $players[] = [
@@ -234,7 +232,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Andreas',
             'lastname' => 'Højsleth',
             'country' => 'dk',
-            'team_id' => 6,
+            //'team_id' => 6,
         ];
 
         $players[] = [
@@ -242,7 +240,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Peter',
             'lastname' => 'Rasmussen',
             'country' => 'dk',
-            'team_id' => 6,
+            //'team_id' => 6,
         ];
 
         $players[] = [
@@ -250,7 +248,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Henrik',
             'lastname' => 'Christensen',
             'country' => 'dk',
-            'team_id' => 6,
+            //'team_id' => 6,
         ];
 
         $players[] = [
@@ -258,7 +256,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => 'Philip',
             'lastname' => 'Aistrup',
             'country' => 'dk',
-            'team_id' => 6,
+            //'team_id' => 6,
         ];
 
         // Ex-fnatic
@@ -276,6 +274,41 @@ class PlayersTableSeeder extends Seeder {
             'country' => 'se',
         ];
 
+        // New titan
+        $players[] = [
+            'name' => 'apEX',
+            'firstname' => 'Dan',
+            'lastname' => 'Madesclaire',
+            'country' => 'fr'
+        ];
+
+        $players[] = [
+            'name' => 'Maniac',
+            'firstname' => 'Mathieu',
+            'lastname' => 'Quiquerez',
+            'country' => 'fr'
+        ];
+
+        $players[] = [
+            'name' => 'KQLY',
+            'firstname' => 'Hovik',
+            'lastname' => 'Tovmassian',
+            'country' => 'fr'
+        ];
+
+        $players[] = [
+            'name' => 'shox',
+            'firstname' => 'Richard',
+            'lastname' => 'Papillon',
+            'country' => 'fr'
+        ];
+
+        $players[] = [
+            'name' => 'RpK',
+            'firstname' => 'Cédric',
+            'lastname' => 'Guipouy',
+            'country' => 'fr'
+        ];
 
         /* template
         $players[] = [
@@ -283,7 +316,7 @@ class PlayersTableSeeder extends Seeder {
             'firstname' => '',
             'lastname' => '',
             'country' => '',
-            'team_id' => ,
+            //'team_id' => ,
         ];
         */
 

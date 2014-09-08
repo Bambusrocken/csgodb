@@ -13,9 +13,13 @@
 
 Route::get('/', ['as' => 'home', 'uses' => 'PageController@home']);
 
+// Organisations
+Route::get('organisations', ['as' => 'organisation.index', 'uses' => 'OrganisationController@index']);
+Route::get('organisation/{id}', ['as' => 'organisation.show', 'uses' => 'OrganisationController@show']);
+
 // Team
 Route::get('teams', ['as' => 'team.index', 'uses' => 'TeamController@index']);
-Route::get('team/{slug}', ['as' => 'team.show', 'uses' => 'TeamController@show']);
+Route::get('team/{id}', ['as' => 'team.show', 'uses' => 'TeamController@show']);
 
 // Player
 Route::get('players/{char?}', ['as' => 'player.index', 'uses' => 'PlayerController@index']);

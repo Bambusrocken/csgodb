@@ -1,8 +1,7 @@
 <?php
 
-// Composer: "fzaninotto/faker": "v1.4.0"
 use Carbon\Carbon;
-use Faker\Factory as Faker;
+use Cdb\Player\PlayerTeamRecord;
 
 class PlayerteamrecordsTableSeeder extends Seeder {
 

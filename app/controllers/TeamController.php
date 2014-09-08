@@ -38,14 +38,12 @@ class TeamController extends BaseController
     /**
      * Show
      *
-     * @param $slug
+     * @param $id
      */
-    public function show($slug)
+    public function show($id)
     {
-        $team = $this->team->findBySlug($slug);
-        $matches = $this->match->where('home_team_id', $team->id)->orWhere('away_team_id', $team->id)->get();
-        $totalPriceMoney = 200000;
+        $team = $this->team->findOrFail($id);
 
-        $this->view('team.show', compact('team', 'matches', 'totalPriceMoney'));
+        $this->view('team.show', compact('team'));
     }
 }

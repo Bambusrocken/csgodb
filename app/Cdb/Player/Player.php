@@ -9,6 +9,11 @@ class Player extends BaseModel implements PresenterInterface
 
     protected $with = ['team'];
 
+    public function lineups()
+    {
+        return $this->belongsToMany('Cdb\Team\Lineup');
+    }
+
     public function team()
     {
         return $this->belongsTo('Cdb\Team\Team');

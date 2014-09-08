@@ -1,59 +1,37 @@
 <?php namespace Cdb\Team;
 
 use Cdb\Core\BaseModel;
+use Illuminate\Support\Collection;
 use McCool\LaravelAutoPresenter\PresenterInterface;
 
 class Team extends BaseModel implements PresenterInterface
 {
     protected $fillable = [];
 
+    public function organisations()
+    {
+        return $this->belongsToMany('Cdb\Team\Organisation');
+    }
+
+    public function lineups()
+    {
+        return $this->hasMany('Cdb\Team\Lineup')->orderBy('start_date', 'desc');
+    }
+
     public function players()
     {
-        return $this->hasMany('Cdb\Player\Player');
-    }
+        $players = new Collection();
 
-    public function playerTeamRecords()
-    {
-        return $this->hasMany('Cdb\Player\PlayerTeamRecord');
-    }
-
-    public function teamTournamentRecords()
-    {
-        return $this->hasMany('Cdb\Tournament\TeamTournament');
-    }
-
-    public function tournaments()
-    {
-        $tournaments = [];
-        foreach ($this->teamTournamentRecords as $teamTournamentRecord) {
-            $tournaments[] = $teamTournamentRecord->tournament;
+        foreach($this->lineups as $lineup) {
+            foreach($lineup->players as $player)
+            {
+                if (!$players->has($player->id)) {
+                    $players->put($player->id, $player);
+                }
+            }
         }
 
-        return $tournaments;
-    }
-
-    public function teamNames()
-    {
-        return $this->hasMany('Cdb\Team\TeamName');
-    }
-
-    public static function findBySlug($slug)
-    {
-        return static::with('teamTournamentRecords', 'teamTournamentRecords.tournament')->where('slug', $slug)->first();
-    }
-
-    public static function search($q)
-    {
-        $searchTerms = explode(' ', $q);
-
-        $instance = new static;
-        $query = $instance->newQuery();
-
-        foreach ($searchTerms as $term) {
-            $query->where('name', 'LIKE', '%' . $term . '%')->orWhere('tag', 'like', '%' . $term . '%');
-        }
-
-        return $query->get();
+        return $players;
     }
 
     public function getPresenter()
